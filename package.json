@@ -1,0 +1,21 @@
+{
+  "name": "masa",
+  "version": "1.0.0",
+  "description": "Javascript API for MASA COIN",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha-webpack \"test/**/*.spec.js\"",
+    "build": "webpack"
+  },
+  "author": "Chaintope Inc.",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "mocha-webpack": "^1.1.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
