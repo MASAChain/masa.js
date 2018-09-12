@@ -1,12 +1,11 @@
 import Masa from '../lib/masa'
 import { expect } from 'chai'
-
-var assert = require('assert')
+import { GANACHE_MNEMONIC } from './util'
 
 describe('masa.js', () => {
   it('should load', () => {
     const masa = new Masa()
-    assert(masa)
+    expect(masa).to.be.ok
   })
   describe('masa point', () => {
     let masaPoint
@@ -23,6 +22,23 @@ describe('masa.js', () => {
     it('get feedback transaction', () => {
       const transaction = masaPoint.feedback('0x1111111111aaaaaaaaaa', 5, 1, 'nice guy')
       expect(transaction).to.be.a('transaction')
+    })
+  })
+  describe('wallet functions', function() {
+    this.timeout(10000)
+    let masa
+    beforeEach(() => {
+      masa = new Masa()
+    })
+    it('generate new wallet', () => {
+      const wallet = masa.generateNewWallet()
+      expect(wallet).to.be.ok
+      expect(wallet).to.be.a('wallet')
+    })
+    it('restore wallet', () => {
+      const wallet = masa.restoreWallet(GANACHE_MNEMONIC)
+      expect(wallet).to.be.ok
+      expect(wallet).to.be.a('wallet')
     })
   })
 })

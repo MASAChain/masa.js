@@ -1,7 +1,7 @@
 import Wallet from '../lib/wallet'
 import { expect } from 'chai'
+import { GANACHE_MNEMONIC } from './util'
 
-const GANACHE_MNEMONIC = 'special client interest guess wrist bring rack hockey tip divert three toe'
 describe('wallet.js', () => {
   it('should load', () => {
     expect(Wallet).to.be.ok
@@ -34,6 +34,9 @@ describe('wallet.js', () => {
     let wallet
     before(function() {
       wallet = new Wallet(GANACHE_MNEMONIC)
+    })
+    it('check cat reget mnemonic', () => {
+      expect(wallet.mnemonic).to.be.equal(GANACHE_MNEMONIC)
     })
     it('check privateKey', () => {
       expect(wallet.privateKey.toString('hex')).to.be.equal('4d8d0ece9fd220f7fb7f53f71e636ac377aa8bab4e5c8e601e515a625917134e')
