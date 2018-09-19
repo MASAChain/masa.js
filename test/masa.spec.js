@@ -15,5 +15,10 @@ describe('masa.js', () => {
     it('get community masa point amount', () => {
       expect(masa.point.communityAmountOf('0x6861766520636f696e20697300000000000000b8', 5)).to.be.equal(200)
     })
+    it('masa.point.feedback is not support.', () => {
+      expect(function() {
+        masa.point.feedback('0x6861766520636f696e20697300000000000000b8', 5, 1, '')
+      }).to.throw('Not support function. Please use MasaTx.')
+    })
   })
 })
