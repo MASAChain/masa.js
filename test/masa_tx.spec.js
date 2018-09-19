@@ -1,6 +1,6 @@
-import {expect} from 'chai'
+import { expect } from 'chai'
 import MasaTx from '../lib/masa_tx'
-import {GANACHE_MNEMONIC} from './util'
+import { GANACHE_MNEMONIC } from './util'
 
 describe('MasaTx', () => {
   describe('init', () => {
@@ -25,17 +25,17 @@ describe('MasaTx', () => {
     beforeEach(() => {
       masaTx = new MasaTx()
     })
-    it('create feedback transaction', async () => {
+    it('create feedback transaction', async() => {
       const feedbackTx = await masaTx.point.feedback('0xdaF8F49A3671082ED2ab0b67ecB7f0182fAEAb6C', 'Challenge Caravan', 1, '')
       expect(feedbackTx).to.be.a('transaction')
     })
     it('unsupport amountOf', () => {
-      expect(function () {
+      expect(function() {
         masaTx.point.amountOf('0x6861766520636f696e20697300000000000000b8')
       }).to.throw('Not support function. Please use Masa.')
     })
     it('unsupport communityAmountOf', () => {
-      expect(function () {
+      expect(function() {
         masaTx.point.communityAmountOf('0x6861766520636f696e20697300000000000000b8', 'chare cara')
       }).to.throw('Not support function. Please use Masa.')
     })
@@ -45,7 +45,7 @@ describe('MasaTx', () => {
     beforeEach(() => {
       masaTx = new MasaTx()
     })
-    it('create transfer transaction', async () => {
+    it('create transfer transaction', async() => {
       const transferTx = await masaTx.coin.transfer('0xdaF8F49A3671082ED2ab0b67ecB7f0182fAEAb6C', 100)
       expect(transferTx).to.be.a('transaction')
     })
@@ -63,7 +63,7 @@ describe('MasaTx', () => {
     beforeEach(() => {
       masaTx = new MasaTx()
     })
-    it('create create transaction', async () => {
+    it('create create transaction', async() => {
       const createTx = await masaTx.community.create('SDGs')
       expect(createTx).to.be.a('transaction')
     })
