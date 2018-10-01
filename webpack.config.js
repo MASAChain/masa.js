@@ -1,7 +1,10 @@
-const path = require('path');
+const path = require('path')
+const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
-  entry: './index.js',
+  target: 'node',
+  externals: [nodeExternals()],
+  entry: ['./index.js'],
   mode: 'development',
   output: {
     filename: 'masa.js',
@@ -13,12 +16,13 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/transform-runtime']
           }
         }
       }
     ]
   }
-};
+}
